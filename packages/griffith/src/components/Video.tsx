@@ -81,7 +81,7 @@ class Video extends Component<VideoProps> {
      * 切换清晰度，如果是非 mse 视频（src 是 blob 类型）
      * data 变化的时候会 remount，所以 componentDidUpdate 中 src 变化一定是清晰度变了
      */
-    if (prevProps.src && src !== prevProps.src) {
+    if (prevProps.src && src !== prevProps.src || prevProps.src !== src) {
       this.isSwitchDefinition = true
       onEvent(EVENTS.CHANGE_QUALITY_START, currentQuality)
       const {willHandleSrcChange} = selectVideo(format, useMSE)
